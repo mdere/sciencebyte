@@ -1,0 +1,18 @@
+<h1>Welcome to BitLearning</h1>
+<%= form_tag(workspace_path, :method=>'get') do %>
+ <p>
+   Problem Type: <br />
+   <%= select_tag("problem_type", options_for_select([['Addition', 'addition'],['Subtraction', 'subtraction'],['Multiplication','multiplication'],['Division','division'],['Random','random']])) %>
+ </p>
+ <p>
+   Difficulty: <br />
+   <%= select_tag("difficulty", options_for_select([['Baby-Byte', 'baby-byte'],['Easy', 'easy'],['Medium','medium'],['Hard','hard'],['Pro','pro']])) %>
+ </p>
+ <p>
+ 	 Total Questions: <br />
+ 	 <%= text_field_tag("total_questions") %>
+ </p>
+ <p>
+   <%= submit_tag 'Submit' %>
+ </p>
+<% end %>

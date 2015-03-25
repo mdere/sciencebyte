@@ -1,0 +1,61 @@
+<%= form_for(@company_register) do |f| %>
+  <% if @company_register.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company_register.errors.count, "error") %> prohibited this company_register from being saved:</h2>
+
+      <ul>
+      <% @company_register.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :business_name %><br>
+    <%= f.text_field :business_name %>
+  </div>
+  <div class="field">
+    <%= f.label :address_number %><br>
+    <%= f.number_field :address_number %>
+  </div>
+  <div class="field">
+    <%= f.label :address_street %><br>
+    <%= f.text_field :address_street %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br>
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br>
+    <%= f.number_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_number %><br>
+    <%= f.text_field :contact_number %>
+  </div>
+  <div class="field">
+    <%= f.label :account_handler_first %><br>
+    <%= f.text_field :account_handler_first %>
+  </div>
+  <div class="field">
+    <%= f.label :account_handler_last %><br>
+    <%= f.text_field :account_handler_last %>
+  </div>
+  <div class="field">
+    <%= f.label :password_hash %><br>
+    <%= f.text_field :password_hash %>
+  </div>
+  <div class="field">
+    <%= f.label :member_since %><br>
+    <%= f.datetime_select :member_since %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

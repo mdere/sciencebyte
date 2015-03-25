@@ -1,0 +1,17 @@
+<h2>Problem #<%= problem[0] %></h2>
+
+<div>
+	<%= "#{problem[0]} #{problem[3][:type]} #{problem[1]}" %>
+<div>
+<div>
+	<% if problem[3][:type] != "/" %> 
+		<%= text_field_tag "#{i}".to_sym, nil, :class => 'input-mini' %>
+	<% else %>
+		<div>
+			Divisible by: <%= text_field_tag "#{i}_div".to_sym, nil, :class => 'input-mini' %>
+		</div>
+		<div>	
+			Remainder: <%= text_field_tag "#{i}_rem".to_sym, nil, :class => 'input-mini' %>
+		</div>
+	<% end %>
+</div>

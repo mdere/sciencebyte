@@ -1,0 +1,12 @@
+<% @paginated_problems.each do |problem| %>
+	<!--
+	Generate a problem page for a single problem, might need to use javascript, but try to yield a partial each page with a next button. 
+	-->
+	<div>
+		<%= form_tag '/arithmetic/submit_problem' do %>
+			<%= render :partial => 'problem_page', :locals => { :problem => problem } %>
+		<% end %>
+	</div>
+	<%= paginate @paginated_problems %>
+	<%= page_entries_info @paginate_problems %>
+<% end %>

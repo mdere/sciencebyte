@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Company Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company_groups.each do |company_group| %>
+      <tr>
+        <td><%= company_group.company_id %></td>
+        <td><%= company_group.group_id %></td>
+        <td><%= link_to 'Show', company_group %></td>
+        <td><%= link_to 'Edit', edit_company_group_path(company_group) %></td>
+        <td><%= link_to 'Destroy', company_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Company group', new_company_group_path %>

@@ -1,0 +1,40 @@
+<%= form_for '/arithmetic/submit' do %>
+	<table class="table .table-hover" >
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Equation</th>
+				<th>Answer</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @generated_problems.each do |i,problem| %>
+				<tr>
+					<td>Problem <%= i %></td>
+					<td><%= "#{problem[0]} #{problem[3][:type]} #{problem[1]} =" %></td>
+						<% if problem[3][:type] != "/" %> 
+							<td>
+								<%= text_field_tag "#{i}".to_sym, nil, :pattern => "#{problem[2]}", :class => 'input-mini' %>
+							</td>
+						<% else %>
+							<td>
+								<table class="table .table-condensed">
+									<tbody>
+										<tr>
+											Divisible by: <%= text_field_tag "#{i}_div".to_sym, nil, :pattern => "#{problem[2][0]}", :class => 'input-mini' %>
+										</tr>
+										<tr>
+											Remainder: <%= text_field_tag "#{i}_rem".to_sym, nil, :pattern => "#{problem[2][1]}", :class => 'input-mini' %>
+										</tr>
+									</tbody>
+							</table>
+							</td>
+						<% end %> 
+				</tr>
+			<% end %>
+		</tbody>
+		<tr>
+			<%= submit_tag "Submit" %> 
+		</tr>
+	</table>
+<% end %>

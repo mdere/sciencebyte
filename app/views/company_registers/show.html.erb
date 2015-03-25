@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business name:</strong>
+  <%= @company_register.business_name %>
+</p>
+
+<p>
+  <strong>Address number:</strong>
+  <%= @company_register.address_number %>
+</p>
+
+<p>
+  <strong>Address street:</strong>
+  <%= @company_register.address_street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @company_register.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @company_register.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @company_register.zip %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @company_register.contact_number %>
+</p>
+
+<p>
+  <strong>Account handler first:</strong>
+  <%= @company_register.account_handler_first %>
+</p>
+
+<p>
+  <strong>Account handler last:</strong>
+  <%= @company_register.account_handler_last %>
+</p>
+
+<p>
+  <strong>Password hash:</strong>
+  <%= @company_register.password_hash %>
+</p>
+
+<p>
+  <strong>Member since:</strong>
+  <%= @company_register.member_since %>
+</p>
+
+<%= link_to 'Edit', edit_company_register_path(@company_register) %> |
+<%= link_to 'Back', company_registers_path %>

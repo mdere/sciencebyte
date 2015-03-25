@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  group_type_id: 1
+  total_users: 1
+  total_companies: 1
+
+two:
+  name: MyString
+  group_type_id: 1
+  total_users: 1
+  total_companies: 1
