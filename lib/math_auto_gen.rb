@@ -3,8 +3,102 @@ module MathAutoGen
 	def test
 		puts "HELLO WORLD"
 	end
+
+	def gen_simple_geometry_area_problems(option = {})
+		case option[:difficulty]
+		when 'baby-byte'
+			min = 1
+			max = 10
+		when 'easy'
+			min = 1
+			max = 100
+		when 'medium'
+			min = 100
+			max = 500
+		when 'hard'
+			min = 500
+			max = 1000
+		when 'pro'
+			min = 1000
+			max = 5000
+		end		
+		# Find Area problems
+		# TODO: Generate Quad-Problems
+		# TODO: Generate Triangle-Problems
+		# Expected return:
+		# { 1 => { :type => quad, :points => {:p1 => [0,0], :p2 => [0,1] , ;p3 => [1,0], :p4 => [1,1]}, :answer => value }, 2 => {} }
+		# generate random points based on :type
+		questions = {}
+		option[:total_questions].times do |i|
+			problem_num = i + 1
+			questions[problem_num] = {}
+			case option[:type]
+			when 'quad-simple'
+				total_points = 4
+				align = true
+			when 'quad-slant'
+				total_points = 4
+				align = false
+			end
+			questions[problem_num][:points] = {}
+			points = questions[problem_num][:points]
+			points[:p1] = [0,0]
+			(total_points - 1).times do |i|
+				# proceeding in clockwise fashion
+				reference_point = points["p#{i+1}".to_sym]
+				current_point = i + 2
+				points["p#{current_point}".to_sym] = []
+				working_point = points["p#{current_point}".to_sym]
+				if align
+					if option[:type] == 'quad-simple'
+						if reference_point[0] == 0 && reference_point[1] == 0
+							working_point.push reference_point[0]
+							working_point.push rand(min..max)
+						elsif reference_point[0] == 0 && reference_point[1] > 0
+							working_point.push rand(min..max)
+							working_point.push reference_point[1]
+						elsif reference_point[0] > 0 && reference_point[1] > 0
+							working_point.push reference_point[0]
+							working_point.push 0
+						end
+					end
+				else
+					if option[:type] == 'quad-slant'
+						if reference_point[0] == 0 && reference_point[1] == 0
+							working_point.push rand(min..max)
+							working_point.push rand(min..max)
+						elsif points.include?(:p3) && reference_point[0] > 0 && reference_point[1] > 0
+							working_point.push rand(min..max)
+							working_point.push 0
+						elsif reference_point[0] > 0 && reference_point[1] > 0
+							working_point.push rand((reference_point[0] + 1)..max)
+							working_point.push reference_point[1]
+						end
+					end
+				end
+			end
+			if option[:type].include?('quad')
+				if align
+					length = points[:p2][1]
+					width = points[:p3][0]
+					questions[problem_num][:length] = length
+					questions[problem_num][:width] = width
+					area_answer = length * width
+					questions[problem_num][:area_answer] = area_answer
+				else
+					right_triangle_1 = {}
+					right_triangle_2 = {}
+					quad = {}
+				end
+			else
+
+			end
+		end
+		questions
+	end
+
 	# option={:difficulty=>'baby-byte',:random=>false,:type_of_questions=>'division',:total_questions=>10}
-	def gen_simple_problems(option = {})
+	def gen_simple_arithmetic_problems(option = {})
 		# Returns hash of arrays - each array is a equation
 		# Format for 1 + 1 = ? (where ? is also part of the array with given answer)
 		# - {[1,1,2]}

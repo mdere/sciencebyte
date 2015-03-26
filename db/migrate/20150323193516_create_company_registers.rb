@@ -12,7 +12,7 @@ class CreateCompanyRegisters < ActiveRecord::Migration
       t.string :account_handler_last
       t.string :password_hash
       t.datetime :member_since
-
+      
       t.timestamps null: false
     end
   end
