@@ -72,10 +72,10 @@ module MathAutoGen
 								creating_pointx = rand(min..max)
 								creating_pointy = rand(min..max)
 							when 1 # Point 3
-								creating_pointx = rand((points[:p2][0]+1)..max)
+								creating_pointx = points[:p2][0] + rand((max-points[:p2][0])) + 1
 								creating_pointy = reference_point[1]
 							when 2 # Point 4
-								creating_pointx = rand((points[:p2][0]+1)..max)
+								creating_pointx = points[:p2][0] + rand((max-points[:p2][0])) + 1
 								creating_pointy = 0
 							end										
 							unless creating_pointx.nil? || creating_pointy.nil?
